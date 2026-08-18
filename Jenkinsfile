@@ -25,7 +25,7 @@ pipeline {
                             ${scannerhome}/bin/sonar-scanner \
                             -Dsonar.projectKey=sonar \
                             -Dsonar.sources=app.js \
-                            -Dsonar.host.url=http://localhost:9000 \
+                            -Dsonar.host.url=http://65.0.177.159:9000 \
                             -Dsonar.login=${SONAR_TOKEN}
                        """
                     }
