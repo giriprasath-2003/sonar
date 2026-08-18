@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Code Coverage') {
             steps {
-                sh 'echo "This is sonarqube task perfect"'
+                bat 'echo This is sonarqube task perfect'
             }
         }
         stage('Sonarqube Analysis') {
@@ -21,7 +21,7 @@ pipeline {
                     def scannerhome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     
                 withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_TOKEN')]) {
-                    sh """
+                    bat """
                             ${scannerhome}/bin/sonar-scanner \
                             -Dsonar.projectKey=sonar \
                             -Dsonar.sources=app.js \
