@@ -18,12 +18,12 @@ pipeline {
         stage('Sonarqube Analysis') {
             steps {
                 script {
-                    def scannerhome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    def scannerhome = tool name: 'sonarqube', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     
-                withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_TOKEN')]) {
                     bat """
                             ${scannerhome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=sonar \
+                            -Dsonar.projectKey=sonarqube \
                             -Dsonar.sources=app.js \
                             -Dsonar.host.url=http://65.0.177.159:9000 \
                             -Dsonar.login=${SONAR_TOKEN}
